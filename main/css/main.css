@@ -20,7 +20,7 @@
 
 
 /*컨텐츠 스타일 */
-.contents {
+.contents-list-wrapper {
   display: block;
   max-width: 700px;
   margin: 0 auto;
@@ -28,7 +28,7 @@
   min-height: 47px;
 }
 
-.contents>ul {
+.contents-list-wrapper>ul {
   list-style-type: none;
 }
 
@@ -66,7 +66,7 @@
   margin-top: 0;
   margin-bottom: 6px;
   overflow: hidden;
-  font-weight: 700;
+  font-weight: 600;
   color: #191f28;
   font-size: 20px;
   text-overflow: ellipsis;
