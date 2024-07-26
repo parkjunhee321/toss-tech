@@ -3,7 +3,7 @@ const getContentElement = (content) => {
     content;
 
   return `<li>
-  <a href="/article/${key}" class="content">
+  <a data-navigation href="/article/${key}" class="content">
     <div class="summary">
       <span class="title">${title}</span>
       <span class="description">${subtitle}</span>
@@ -17,8 +17,6 @@ const getContentElement = (content) => {
 };
 
 export default ({ contents }) => {
-  const newContent = document.querySelector(".contents-list").cloneNode(true);
   const contentElements = contents.map(getContentElement).join("");
-  newContent.innerHTML = contentElements;
-  return newContent;
+  return contentElements;
 };
