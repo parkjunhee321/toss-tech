@@ -1,13 +1,12 @@
 const ROUTE_PARAMETER_REGEXP = /:(\w+)/g;
 const URL_FRAGMENT_REGEXP = "([^\\/]+)";
-const TICKTIME = 250;
 
 const extractUrlParams = (route, pathname) => {
-  const params = {};
-
   if (route.params.length === 0) {
-    return params;
+    return {};
   }
+
+  const params = {};
 
   const matches = pathname.match(route.testRegExp);
 
@@ -37,10 +36,8 @@ export default () => {
     lastPathname = pathname;
 
     const currentRoute = routes.find((route) => {
-      const { testRegExp } = route;
-      return testRegExp.test(pathname);
+      return route.testRegExp.test(pathname);
     });
-
     if (!currentRoute) {
       notFound();
       return;
@@ -75,13 +72,10 @@ export default () => {
     return router;
   };
 
-  router.navigate = (path) => {
-    window.history.pushState(null, null, path);
-  };
-
   router.start = () => {
     checkRoutes();
-    window.setInterval(checkRoutes, TICKTIME);
+
+    return router;
   };
 
   return router;
