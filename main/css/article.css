@@ -1,0 +1,43 @@
+.article-container {
+  width: 700px;
+  margin: 0px auto;
+}
+
+.article-banner-image {
+  width: 100%;
+  margin-top: 36px;
+  border-radius: 12px;
+}
+
+.article-title {
+  margin-bottom: 0px;
+  font-size: 48px;
+  line-height: 1.25;
+  color: rgb(51, 61, 75);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  font-weight: 700;
+}
+
+.article-container > :not(style) ~ :not(style) {
+  margin-top: 20px;
+}
+
+.chip-container {
+  display: flex;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 14px;
+  border: 1px solid transparent;
+  border-radius: 19px;
+  background-color: #f2f4f6;
+  color: #4e5968;
+
+  font-size: 13px;
+  font-weight: 400;
+}
