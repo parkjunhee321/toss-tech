@@ -27,7 +27,7 @@ const isNodeChanged = (node1, node2) => {
 
   return false;
 };
-
+// 변한게 있는지 체크 재귀를 통해 노드별로 확인한다.
 const applyDiff = (parentNode, realNode, virtualNode) => {
   if (realNode && !virtualNode) {
     realNode.remove();
@@ -39,6 +39,7 @@ const applyDiff = (parentNode, realNode, virtualNode) => {
     return;
   }
 
+  //노드가 바뀌었다면 기존 노드를 가상 노드로 바꿔준다.
   if (isNodeChanged(virtualNode, realNode)) {
     realNode.replaceWith(virtualNode);
     return;
