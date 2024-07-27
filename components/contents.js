@@ -3,8 +3,15 @@ export default function Contents() {
   <img class="banner-image" src="./assets/tosstect_banner.webp" alt="배너이미지">
 </div>
 <section class="contents-list-wrapper">
-  <ul class="contents-list">
+<div class="tabs-container">
+<ul class="tabs" data-component="tabs">
+  <li class="tab">전체</li>
+  <li class="tab">개발</li>
+  <li class="tab">디자인</li>
+</ul>
+</div>
+  <div class="contents-list" data-component="contents">
   
-  </ul>
+  </div>
 </section>`;
 }
