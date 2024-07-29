@@ -2,7 +2,8 @@ const getContentElement = (content) => {
   const { title, subtitle, createdTime, editor, thumbnailConfig, key } =
     content;
 
-  return `<li>
+  return `
+<li>
   <a data-navigation href="/article/${key}" class="content">
     <div class="summary">
       <span class="title">${title}</span>
