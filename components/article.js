@@ -8,17 +8,19 @@ export default function Article(article) {
     })
     .join("");
 
-  return `<section class="article-container">
+  return `
+  <section class="article-container">
     <div class="article-intro">
       <img class="article-banner-image" src="${imageUrl}" alt="${
     imageAlt || "썸네일"
   }" />
       <h1 class="article-title">${title}</h1>
       <div class="chip-container">
+      
       </div>
-      </div>
-      <article class="article">
+    </div>
+    <article class="article">
       ${result}
-      </article>
-    </section>`;
+    </article>
+  </section>`;
 }
