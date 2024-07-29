@@ -53,11 +53,6 @@ export default (container) => {
   const detail = (params) => {
     const { key } = params;
     const articleInfo = getArticleInfo(contents, key);
-    if (!articleInfo) {
-      notFound();
-      return;
-    }
-
     const articleDetailData = getArticleDetailData();
     const { openGraph, seoConfig } = articleInfo;
     const { imageAlt, imageUrl } = openGraph;
