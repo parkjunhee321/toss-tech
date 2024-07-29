@@ -15,36 +15,49 @@ import getArticleInfo from "./getArticleInfo.js";
 const contents = getContents();
 
 export default (container) => {
+  const TABS = {
+    ALL: "전체",
+  };
+
   const home = () => {
     const [state, setState] = useState({
-      currentFilter: "전체",
+      currentFilter: TABS.ALL,
       contents: contents,
     });
     container.innerHTML = ContentsWrapperComponent();
     registry.add("contents", viewContents);
     registry.add("tabs", viewTabs);
 
-    document.querySelector(".tabs").addEventListener("click", (event) => {
+    const handleTabClick = (event) => {
       const tabValue = event.target.innerText;
-      setState({ ...state, currentFilter: tabValue });
-      switch (tabValue) {
-        case "전체":
-          setState({ currentFilter: "전체", contents: contents });
-          break;
-        default:
-          const filteredContents = contents.filter(
-            (value) => value.category == tabValue
-          );
-          setState({ currentFilter: tabValue, contents: filteredContents });
-          break;
+      let updatedContents = contents;
+
+      if (tabValue !== TABS.ALL) {
+        updatedContents = contents.filter(
+          (value) => value.category === tabValue
+        );
       }
-    });
+
+      setState({
+        currentFilter: tabValue,
+        contents: updatedContents,
+      });
+
+      render(state);
+    };
+
+    document.querySelector(".tabs").addEventListener("click", handleTabClick);
     render(state);
   };
 
   const detail = (params) => {
     const { key } = params;
     const articleInfo = getArticleInfo(contents, key);
+    if (!articleInfo) {
+      notFound();
+      return;
+    }
+
     const articleDetailData = getArticleDetailData();
     const { openGraph, seoConfig } = articleInfo;
     const { imageAlt, imageUrl } = openGraph;
@@ -54,6 +67,7 @@ export default (container) => {
         tags: seoConfig.tags,
       });
     };
+
     container.innerHTML = ArticleComponent({
       ...articleDetailData,
       imageAlt,
