@@ -16,7 +16,9 @@ const getContentElement = (content) => {
 </li>`;
 };
 
-export default ({ contents }) => {
-  const contentElements = contents.map(getContentElement).join("");
-  return contentElements;
+export default (targetElement, { contents }) => {
+  const newContentList = targetElement.cloneNode(true);
+  const contentsElements = contents.map(getContentElement).join("");
+  newContentList.innerHTML = contentsElements;
+  return newContentList;
 };
