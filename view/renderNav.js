@@ -1,6 +1,8 @@
 const NavbarComponent = `<div class="nav-container">
 <div class="nav-logo">
+  <a href="/">
     <img width="auto" height="20px" src="./assets/icon.svg" alt="로고" />
+  </a>
 </div>
 <div class="nav-contents">
   <ul class="nav-menu">
